@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 
-public class StandardShaderGUI : ShaderGUI
+public class PBRStandardShaderGUI : ShaderGUI
 {
     public enum BRDFMode
     {

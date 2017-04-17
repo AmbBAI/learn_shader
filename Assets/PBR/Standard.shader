@@ -47,6 +47,6 @@
 		}
 		ENDCG
 	}
-	CustomEditor "StandardShaderGUI"
+	CustomEditor "PBRStandardShaderGUI"
 	FallBack "Diffuse"
 }
