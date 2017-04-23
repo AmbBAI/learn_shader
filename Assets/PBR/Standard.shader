@@ -6,23 +6,43 @@
 		_ParamTex ("Smoothness, Metallic, AO", 2D) = "white" {}
 		_SmoothnessScale ("Smoothness Scale", Range(0,1)) = 1.0
 		_MetallicScale ("Metallic Scale", Range(0,1)) = 1.0
-		_IndirectSpecularColor ("Indirect Specular Color", Color) = (0,0,0,0)
 	}
 	SubShader {
 		Tags { "RenderType"="Opaque" }
 		LOD 200
 
 		CGPROGRAM
-
-		#pragma surface surf StandardOverride fullforwardshadows
-		#pragma multi_compile _ UNITY_PBS_USE_BRDF2 UNITY_PBS_USE_BRDF3
-		#pragma shader_feature DISABLE_ENV_IBL
+		#pragma surface surf StandardOverride
 		#pragma target 3.0
 
-		#ifdef DISABLE_ENV_IBL
-		half3 _IndirectSpecularColor;
-		#endif
-		#include "PBSLightingOverride.cginc"
+		#include "UnityPBSLighting.cginc"
+		inline half4 LightingStandardOverride (SurfaceOutputStandard s, half3 viewDir, UnityGI gi)
+		{
+			s.Normal = normalize(s.Normal);
+
+			half oneMinusReflectivity;
+			half3 specColor;
+			s.Albedo = DiffuseAndSpecularFromMetallic (s.Albedo, s.Metallic, /*out*/ specColor, /*out*/ oneMinusReflectivity);
+
+			// shader relies on pre-multiply alpha-blend (_SrcBlend = One, _DstBlend = OneMinusSrcAlpha)
+			// this is necessary to handle transparency in physically correct way - only diffuse component gets affected by alpha
+			half outputAlpha;
+			s.Albedo = PreMultiplyAlpha (s.Albedo, s.Alpha, oneMinusReflectivity, /*out*/ outputAlpha);
+
+			half4 c = BRDF2_Unity_PBS (s.Albedo, specColor, oneMinusReflectivity, s.Smoothness, s.Normal, viewDir, gi.light, gi.indirect);
+			c.a = outputAlpha;
+			return c;
+		}
+
+		inline void LightingStandardOverride_GI (
+			SurfaceOutputStandard s,
+			UnityGIInput data,
+			inout UnityGI gi)
+		{
+			gi = UnityGI_Base(data, s.Occlusion, s.Normal);
+			Unity_GlossyEnvironmentData g = UnityGlossyEnvironmentSetup(s.Smoothness, data.worldViewDir, s.Normal, lerp(unity_ColorSpaceDielectricSpec.rgb, s.Albedo, s.Metallic));
+			gi.indirect.specular = unity_IndirectSpecColor.rgb * s.Occlusion;
+		}
 
 		sampler2D _MainTex;
 		sampler2D _NormalTex;
@@ -43,10 +63,8 @@
 			o.Smoothness = _SmoothnessScale * p.r;
 			o.Metallic = _MetallicScale * p.g;
 			o.Occlusion = p.b;
-			o.Alpha = c.a;
 		}
 		ENDCG
 	}
-	CustomEditor "PBRStandardShaderGUI"
 	FallBack "Diffuse"
 }

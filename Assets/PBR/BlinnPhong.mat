@@ -6,10 +6,10 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: terrain
-  m_Shader: {fileID: 4800000, guid: fb35072ad27c4b248977a1588b1af1c9, type: 3}
-  m_ShaderKeywords: 
-  m_LightmapFlags: 4
+  m_Name: Standard
+  m_Shader: {fileID: 4800000, guid: a08e84b7aefe3e840a8e29182de48241, type: 3}
+  m_ShaderKeywords: DISABLE_ENV_IBL UNITY_PBS_USE_BRDF2 _EMISSION
+  m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
@@ -17,10 +17,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _BlendMap:
-        m_Texture: {fileID: 2800000, guid: 99fa9ed93aa27484380486899f04fe72, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -41,20 +37,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _IndexMap:
-        m_Texture: {fileID: 2800000, guid: a8f1c47e96e615546bf2219fe93d7cd8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 256a48b57e85428438734d5a89d7f290, type: 3}
-        m_Scale: {x: 10, y: 10}
+        m_Texture: {fileID: 2800000, guid: 482bb68be3f87e640b2a5cff77e0f97f, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTex:
-        m_Texture: {fileID: 2800000, guid: a42c4ed53ee660f43afda1213cdba6d7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5de144f907563a942b5941696c93edb0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -66,31 +58,29 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParamTex:
-        m_Texture: {fileID: 2800000, guid: 9db6a67b88e66e14896e99bf15a839c9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7f998c278689d0947bfe9a4447ed78c6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _BlockScale: 1
-    - _BlockShrinkage: 0.16
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 1
     - _GlossyReflections: 1
-    - _Metallic: 0
-    - _MetallicScale: 0.22
+    - _Metallic: 1
+    - _MetallicScale: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-    - _SmoothnessScale: 0.85
+    - _SmoothnessScale: 1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _BlockShrinkage: {r: 0.00781, g: 0.23437, b: 0.25, a: 0.00781}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _IndirectSpecularColor: {r: 0.36078432, g: 0.45098042, b: 0.58431375, a: 1}
