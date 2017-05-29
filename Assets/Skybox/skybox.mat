@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: skybox
+  m_Shader: {fileID: 4800000, guid: e4222407f9f981d4984d0571bdcbb860, type: 3}
+  m_ShaderKeywords: _EMISSION _SUNDISK_HIGH_QUALITY
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - MieMap:
+        m_Texture: {fileID: 2800000, guid: dd0a481b3f9bfc844ad27c0370fae2dc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - RayleighMap:
+        m_Texture: {fileID: 2800000, guid: b466a465946af984fa4d0de47a6f107a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MieMap:
+        m_Texture: {fileID: 2800000, guid: 347a17294d7358c4c85f0fdc0c361ad1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RayleighMap:
+        m_Texture: {fileID: 2800000, guid: 1b635abdd43b50a4999b15a139696b02, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _AtmosphereThickness: 1
+    - _Exposure: 1.3
+    - _MieG: -0.996
+    - _SunDisk: 2
+    - _SunSize: 0.048
+    m_Colors:
+    - NightSkyColBase: {r: 0, g: 0.7, b: 1, a: 1}
+    - NightSkyColDelta: {r: 0.6, g: 0.75, b: 0.82, a: 0.4}
+    - PartialMieInScatteringConst: {r: 0.15, g: 0.15, b: 0.15, a: 0.8}
+    - PartialRayleighInScatteringConst: {r: 1, g: 1, b: 1, a: 0.1}
+    - _GroundColor: {r: 0.369, g: 0.349, b: 0.341, a: 1}
+    - _NightSkyColBase: {r: 0, g: 0.7, b: 1, a: 1}
+    - _NightSkyColDelta: {r: 0.6, g: 0.75, b: 0.82, a: 0.4}
+    - _PartialMieInScattering: {r: 1, g: 1, b: 1, a: 1}
+    - _PartialRayleighInScattering: {r: 0.85294116, g: 0.85294116, b: 0.85294116,
+        a: 0.585}
+    - _SkyTint: {r: 0.5, g: 0.5, b: 0.5, a: 1}
